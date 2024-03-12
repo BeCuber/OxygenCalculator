@@ -1,0 +1,15 @@
+<resources>
+    <!-- name = "id" A-Z ordered-->
+    <string name="app_name">O2Calculator</string>
+    <string name="txtBares">bar (Bars)</string>
+    <string name="txtInfoLO2">Select the pressure and capacity of the cylinder.</string>
+    <string name="txtInfoTiempo">Select the administration speed.</string>
+    <string name="txtLitrosB">l (Liters of the cylinder)</string>
+    <string name="txtLO2Restante">There are xxxx liters of O2 left.</string>
+    <string name="txtTiempoRestante">xxx hours and xxx minutes left.</string>
+    <string name="txtVelO2">l/min (Amount of O2 administered)</string>
+
+
+
+
+</resources>
