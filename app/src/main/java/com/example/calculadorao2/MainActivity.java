@@ -137,13 +137,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     /*----Cálculo de los litros totales de oxígeno restantes----*/
-    //[inputBares(bar) - VR(bar)] x inputLitrosB (l) = litros totales O2 restantes
+    //[inputBares(bar) - VolumenResidual(bar)] x inputLitrosB (l) = litros totales O2 restantes
     private float getVolO2(){
         float VolO2 = 0;
         final float VR = 20;
+        //Comprueba si el edittext está vacío antes de convertir su cadena a float
+        String inputBaresText = inputBares.getText().toString();
+        String inputLitrosBText = inputLitrosB.getText().toString();
 
-        float baresActuales = Float.parseFloat(inputBares.getText().toString());
-        float capacidadBotella = Float.parseFloat(inputLitrosB.getText().toString());
+        float baresActuales = inputBaresText.isEmpty() ? 0 : Float.parseFloat(inputBaresText);
+        float capacidadBotella = inputLitrosBText.isEmpty() ? 0 : Float.parseFloat(inputLitrosBText);
 
         VolO2 = (baresActuales - VR)*capacidadBotella;
 
@@ -154,7 +157,10 @@ public class MainActivity extends AppCompatActivity {
     //litros totales de O2 / velocidad de administración (l/min)
     private float getTimeRemaining(){
         float minutes = 0;
-        float velocidadAdmin = Float.parseFloat(inputVelO2.getText().toString());
+        //Comprueba si el edittext está vacío antes de convertir su cadena a float
+        String inputVelO2Text = inputVelO2.getText().toString();
+        float velocidadAdmin = inputVelO2Text.isEmpty() ? 0 : Float.parseFloat(inputVelO2Text);
+
         minutes = getVolO2()/velocidadAdmin;
 
         return minutes;
