@@ -3,11 +3,14 @@ package com.example.calculadorao2;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +21,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     //Creación de variables para elementos de la interfaz
-    EditText inputBares, inputLitrosB, inputVelO2;
+    EditText inputBares, inputVelO2;
     TextView txtInfoLO2, txtInfoTiempo;
     SeekBar seekBar;
     Spinner spinnerVolCylinder;
@@ -37,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Vinculación de las variables con los elementos de la interfaz
         inputBares = findViewById(R.id.inputBares);
-        inputLitrosB = findViewById(R.id.inputLitrosB);
         inputVelO2 = findViewById(R.id.inputVelO2);
         txtInfoLO2 = findViewById(R.id.txtInfoLO2);
         txtInfoTiempo = findViewById(R.id.txtInfoTiempo);
@@ -47,10 +49,27 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.VolCylinder,
-                android.R.layout.simple_spinner_item
+                android.R.layout.simple_spinner_dropdown_item
         );
         //Asignar el adaptador al spinner
         spinnerVolCylinder.setAdapter(adapter);
+
+        spinnerVolCylinder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //float volSelected = (float) spinnerVolCylinder.getItemAtPosition(position);
+                String volSelected = (String) spinnerVolCylinder.getItemAtPosition(position);
+                Toast.makeText(MainActivity.this, volSelected, Toast.LENGTH_SHORT).show();
+                updateLO2Info();
+                updateTiempoInfo();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
 
         updateLO2Info();
@@ -84,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        /*---Comportamiento al editar los EditText---*/
+        /*---Comportamiento al modificar los EditText---*/
 
         inputBares.addTextChangedListener(new TextWatcher() {
             @Override
@@ -104,24 +123,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        inputLitrosB.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                updateLO2Info();
-                updateTiempoInfo();
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         inputVelO2.addTextChangedListener(new TextWatcher() {
             @Override
@@ -166,10 +167,12 @@ public class MainActivity extends AppCompatActivity {
         final float VR = 20;
         //Comprueba si el edittext está vacío antes de convertir su cadena a float
         String inputBaresText = inputBares.getText().toString();
-        String inputLitrosBText = inputLitrosB.getText().toString();
+
+        //Obtener el valor seleccionado actualmente en el Spinner
+        String volSelected = (String) spinnerVolCylinder.getSelectedItem();
 
         float baresActuales = inputBaresText.isEmpty() ? 0 : Float.parseFloat(inputBaresText);
-        float capacidadBotella = inputLitrosBText.isEmpty() ? 0 : Float.parseFloat(inputLitrosBText);
+        float capacidadBotella = Float.parseFloat(volSelected);
 
         float VolO2 = (baresActuales - VR)*capacidadBotella;
 

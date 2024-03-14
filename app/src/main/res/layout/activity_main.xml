@@ -34,81 +34,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.414" />
 
-    <EditText
-        android:id="@+id/inputLitrosB"
-        android:layout_width="97dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputBares"
-        app:layout_constraintVertical_bias="0.08" />
-
-    <TextView
-        android:id="@+id/txtLitrosB"
-        android:layout_width="106dp"
-        android:layout_height="41dp"
-        android:text="@string/txtLitrosB"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.565"
-        app:layout_constraintStart_toEndOf="@+id/inputLitrosB"
-        app:layout_constraintTop_toBottomOf="@+id/txtBares"
-        app:layout_constraintVertical_bias="0.106" />
-
-    <TextView
-        android:id="@+id/txtInfoLO2"
-        android:layout_width="287dp"
-        android:layout_height="34dp"
-        android:text="@string/txtInfoLO2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/txtLitrosB"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputLitrosB"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642" />
-
-    <TextView
-        android:id="@+id/txtInfoTiempo"
-        android:layout_width="287dp"
-        android:layout_height="42dp"
-        android:text="@string/txtInfoTiempo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/txtVelO2"
-        app:layout_constraintStart_toStartOf="@+id/inputVelO2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.862" />
-
-    <EditText
-        android:id="@+id/inputVelO2"
-        android:layout_width="97dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputLitrosB"
-        app:layout_constraintVertical_bias="0.413" />
-
-    <TextView
-        android:id="@+id/txtVelO2"
-        android:layout_width="106dp"
-        android:layout_height="41dp"
-        android:text="@string/txtVelO2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.565"
-        app:layout_constraintStart_toEndOf="@+id/inputVelO2"
-        app:layout_constraintTop_toBottomOf="@+id/txtLitrosB"
-        app:layout_constraintVertical_bias="0.412" />
-
     <TextView
         android:id="@+id/txtBares"
         android:layout_width="106dp"
@@ -123,12 +48,72 @@
 
     <Spinner
         android:id="@+id/spinnerVolCylinder"
-        android:layout_width="167dp"
-        android:layout_height="53dp"
+        android:layout_width="97dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintVertical_bias="0.519" />
+
+    <TextView
+        android:id="@+id/txtLitrosB"
+        android:layout_width="106dp"
+        android:layout_height="41dp"
+        android:text="@string/txtLitrosB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinnerVolCylinder"
+        app:layout_constraintTop_toBottomOf="@+id/txtBares"
+        app:layout_constraintVertical_bias="0.106" />
+
+    <TextView
+        android:id="@+id/txtInfoLO2"
+        android:layout_width="287dp"
+        android:layout_height="34dp"
+        android:text="@string/txtInfoLO2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txtLitrosB"
+        app:layout_constraintStart_toStartOf="@+id/spinnerVolCylinder"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.642" />
+
+    <EditText
+        android:id="@+id/inputVelO2"
+        android:layout_width="97dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="156dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInfoLO2" />
+
+    <TextView
+        android:id="@+id/txtVelO2"
+        android:layout_width="106dp"
+        android:layout_height="41dp"
+        android:text="@string/txtVelO2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.561"
+        app:layout_constraintStart_toEndOf="@+id/inputVelO2"
+        app:layout_constraintTop_toBottomOf="@+id/txtInfoLO2"
+        app:layout_constraintVertical_bias="0.105" />
+
+    <TextView
+        android:id="@+id/txtInfoTiempo"
+        android:layout_width="287dp"
+        android:layout_height="42dp"
+        android:text="@string/txtInfoTiempo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txtVelO2"
+        app:layout_constraintStart_toStartOf="@+id/inputVelO2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.862" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
