@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Elementos de la interfaz
+    //Creación de variables para elementos de la interfaz
     EditText inputBares, inputLitrosB, inputVelO2;
     TextView txtInfoLO2, txtInfoTiempo;
     SeekBar seekBar;
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        //Vinculación de las variables con los elementos de la interfaz
         inputBares = findViewById(R.id.inputBares);
         inputLitrosB = findViewById(R.id.inputLitrosB);
         inputVelO2 = findViewById(R.id.inputVelO2);
@@ -40,20 +41,17 @@ public class MainActivity extends AppCompatActivity {
         seekBar = findViewById(R.id.seekBar);
 
 
-
-
-        /*-----Comportamiento del seekBar para que modifique el valor de los bares-----*/
-
+        //Configuración valor predeterminado del seekBar
         int defaultValue = Integer.parseInt(inputBares.getText().toString());
         seekBar.setProgress(defaultValue);
+
+        /*-----Comportamiento del seekBar para que modifique el valor de los bares-----*/
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
-
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                 inputBares.setText(Integer.toString(progress));
-                txtInfoLO2.setText("There are "+getVolO2()+" l O2 left.");
+                updateLO2Info();
 
             }
 
@@ -68,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        txtInfoLO2.setText("There are "+getVolO2()+" l O2 left.");
-        txtInfoTiempo.setText("There are "+getTimeRemaining()+" minutes remaining.");
+        updateLO2Info();
+        updateTiempoInfo();
 
         /*---Comportamiento al editar los EditText---*/
 
@@ -81,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                txtInfoLO2.setText("There are "+getVolO2()+" l O2 left.");
+                updateLO2Info();
             }
 
             @Override
@@ -98,8 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                txtInfoLO2.setText("There are "+getVolO2()+" l O2 left.");
+                updateLO2Info();
 
             }
 
@@ -117,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                txtInfoTiempo.setText("There are "+getTimeRemaining()+" minutes remaining.");
+                updateTiempoInfo();
             }
 
             @Override
@@ -129,10 +126,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    //Métodos para actualizar la información de LO2 y Tiempo restantes
+    private void updateLO2Info(){
+        txtInfoLO2.setText("There are "+getVolO2()+" l O2 left.");
+    }
+    private void updateTiempoInfo(){
+        txtInfoTiempo.setText("There are "+getTimeRemaining()+" minutes remaining.");
+    }
+
+
 
     /*----Cálculo de los litros totales de oxígeno restantes----*/
     //[inputBares(bar) - VR(bar)] x inputLitrosB (l) = litros totales O2 restantes
-    public float getVolO2(){
+    private float getVolO2(){
         float VolO2 = 0;
         final float VR = 20;
 
@@ -146,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
     /*---Cálculo del tiempo que se puede suministrar el tratamiento actual (l/min)---*/
     //litros totales de O2 / velocidad de administración (l/min)
-    public float getTimeRemaining(){
+    private float getTimeRemaining(){
         float minutes = 0;
         float velocidadAdmin = Float.parseFloat(inputVelO2.getText().toString());
         minutes = getVolO2()/velocidadAdmin;
