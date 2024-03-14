@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">CalculadoraO2</string>
+    <string-array name="VolCylinder">
+        <item>1</item>
+        <item>1.2</item>
+        <item>2</item>
+        <item>3</item>
+        <item>5</item>
+        <item>7</item>
+        <item>7.5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>50</item>
+    </string-array>
     <string name="txtBares">bar (Bares)</string>
     <string name="txtInfoLO2">Seleciona la presión y la capcidad de la bombona.</string>
     <string name="txtInfoTiempo">Selecciona la velocidad de administración.</string>

@@ -3,8 +3,10 @@ package com.example.calculadorao2;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     EditText inputBares, inputLitrosB, inputVelO2;
     TextView txtInfoLO2, txtInfoTiempo;
     SeekBar seekBar;
+    Spinner spinnerVolCylinder;
 
 
     @Override
@@ -39,6 +42,16 @@ public class MainActivity extends AppCompatActivity {
         txtInfoLO2 = findViewById(R.id.txtInfoLO2);
         txtInfoTiempo = findViewById(R.id.txtInfoTiempo);
         seekBar = findViewById(R.id.seekBar);
+        spinnerVolCylinder = findViewById(R.id.spinnerVolCylinder);
+        //Creación del adapter para asignar las opciones al spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.VolCylinder,
+                android.R.layout.simple_spinner_item
+        );
+        //Asignar el adaptador al spinner
+        spinnerVolCylinder.setAdapter(adapter);
+
 
         updateLO2Info();
         updateTiempoInfo();
