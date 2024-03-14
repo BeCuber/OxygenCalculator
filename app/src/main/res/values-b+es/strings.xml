@@ -3,10 +3,10 @@
     <string name="txtBares">bar (Bares)</string>
     <string name="txtInfoLO2">Seleciona la presión y la capcidad de la bombona.</string>
     <string name="txtInfoTiempo">Selecciona la velocidad de administración.</string>
-    <string name="txtLitrosB">l (Litros de la bombona)</string>
+    <string name="txtLitrosB">L (Litros de la bombona)</string>
     <string name="txtLO2Restante">Quedan xxxx litros de O2.</string>
     <string name="txtTiempoRestante">Quedan xxx horas y xxx minutos.</string>
-    <string name="txtVelO2">l/min (Cantidad de O2 administrada)</string>
+    <string name="txtVelO2">L/min (Cantidad de O2 administrada)</string>
 
 
 

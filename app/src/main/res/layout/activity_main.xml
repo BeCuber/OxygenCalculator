@@ -11,7 +11,7 @@
         android:id="@+id/seekBar"
         android:layout_width="286dp"
         android:layout_height="53dp"
-        android:max="315"
+        android:max="400"
         android:min="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

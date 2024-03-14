@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         txtInfoTiempo = findViewById(R.id.txtInfoTiempo);
         seekBar = findViewById(R.id.seekBar);
 
+        updateLO2Info();
+        updateTiempoInfo();
+
 
         //Configuración valor predeterminado del seekBar
         int defaultValue = Integer.parseInt(inputBares.getText().toString());
@@ -66,8 +69,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        updateLO2Info();
-        updateTiempoInfo();
+
 
         /*---Comportamiento al editar los EditText---*/
 
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 updateLO2Info();
+                updateTiempoInfo();
             }
 
             @Override
@@ -97,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 updateLO2Info();
+                updateTiempoInfo();
 
             }
 
@@ -128,10 +132,16 @@ public class MainActivity extends AppCompatActivity {
     }
     //Métodos para actualizar la información de LO2 y Tiempo restantes
     private void updateLO2Info(){
-        txtInfoLO2.setText("There are "+getVolO2()+" l O2 left.");
+        txtInfoLO2.setText("There are "+getVolO2()+" L O2 left.");
     }
     private void updateTiempoInfo(){
-        txtInfoTiempo.setText("There are "+getTimeRemaining()+" minutes remaining.");
+        // Convertir los minutos que devuelve getMinutesRemaining a horas y minutos
+        int horas = (int) getMinutesRemaining() / 60;
+        int minutos = (int) getMinutesRemaining() % 60;
+        //Formatear un String en hh:mm
+        String tiempoFormateado = String.format("%02d:%02d", horas, minutos);
+        //Establecer texto formateado en el edittext
+        txtInfoTiempo.setText("There are "+ tiempoFormateado +" remaining.");
     }
 
 
@@ -139,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
     /*----Cálculo de los litros totales de oxígeno restantes----*/
     //[inputBares(bar) - VolumenResidual(bar)] x inputLitrosB (l) = litros totales O2 restantes
     private float getVolO2(){
-        float VolO2 = 0;
+
         final float VR = 20;
         //Comprueba si el edittext está vacío antes de convertir su cadena a float
         String inputBaresText = inputBares.getText().toString();
@@ -148,20 +158,20 @@ public class MainActivity extends AppCompatActivity {
         float baresActuales = inputBaresText.isEmpty() ? 0 : Float.parseFloat(inputBaresText);
         float capacidadBotella = inputLitrosBText.isEmpty() ? 0 : Float.parseFloat(inputLitrosBText);
 
-        VolO2 = (baresActuales - VR)*capacidadBotella;
+        float VolO2 = (baresActuales - VR)*capacidadBotella;
 
         return VolO2;
     }
 
     /*---Cálculo del tiempo que se puede suministrar el tratamiento actual (l/min)---*/
     //litros totales de O2 / velocidad de administración (l/min)
-    private float getTimeRemaining(){
-        float minutes = 0;
+    private float getMinutesRemaining(){
+
         //Comprueba si el edittext está vacío antes de convertir su cadena a float
         String inputVelO2Text = inputVelO2.getText().toString();
         float velocidadAdmin = inputVelO2Text.isEmpty() ? 0 : Float.parseFloat(inputVelO2Text);
 
-        minutes = getVolO2()/velocidadAdmin;
+        float minutes = getVolO2()/velocidadAdmin;
 
         return minutes;
     }
