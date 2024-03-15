@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txtInfoLO2, txtInfoTiempo;
     SeekBar seekBar;
     Spinner spinnerVolCylinder;
+    ArcSeekBar arcSeekBar;
 
 
     @Override
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         txtInfoTiempo = findViewById(R.id.txtInfoTiempo);
         seekBar = findViewById(R.id.seekBar);
         spinnerVolCylinder = findViewById(R.id.spinnerVolCylinder);
+        arcSeekBar = findViewById(R.id.arcSeekBar);
 
         setupSpinner();
         setupSeekBar();
