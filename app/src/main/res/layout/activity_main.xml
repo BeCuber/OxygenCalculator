@@ -5,14 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="286dp"
         android:layout_height="53dp"
-        android:max="400"
-        android:min="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
@@ -21,7 +19,7 @@
         app:layout_constraintVertical_bias="0.15" />
 
     <EditText
-        android:id="@+id/inputBares"
+        android:id="@+id/inputPressure"
         android:layout_width="97dp"
         android:layout_height="50dp"
         android:ems="10"
@@ -34,6 +32,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.414" />
 
+    <Spinner
+        android:id="@+id/spinnerPressureUnit"
+        android:layout_width="103dp"
+        android:layout_height="54dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.782"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.295" />
+
     <TextView
         android:id="@+id/txtBares"
         android:layout_width="106dp"
@@ -42,7 +51,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.558"
-        app:layout_constraintStart_toEndOf="@+id/inputBares"
+        app:layout_constraintStart_toEndOf="@+id/inputPressure"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.41" />
 

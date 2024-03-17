@@ -14,6 +14,11 @@
         <item>20</item>
         <item>50</item>
     </string-array>
+    <string-array name="PressureUnit">
+        <item>bar</item>
+        <item>kPa</item>
+        <item>psi</item>
+    </string-array>
     <string name="txtBares">bar (Bars)</string>
     <string name="txtInfoLO2">Select the pressure and capacity of the cylinder.</string>
     <string name="txtInfoTiempo">Select the administration speed.</string>
